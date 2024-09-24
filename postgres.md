@@ -4,8 +4,9 @@
 ```
 docker run -it -d --name postgres --network host -e POSTGRES_PASSWORD=password postgres
 
-psql -U postgres -p 5432 -h 127.0.0.1
-psql -U postgres -p 5432 -h 127.0.0.1 -W # 目前不需要密码
+psql -U postgres -p 5432 -h 127.0.0.1 # 如果需要会提示输入密码
+psql -U postgres -p 5432 -h 127.0.0.1 -W # 强制输入密码
+psql -U postgres -p 5432 -h 127.0.0.1 -w # 强制不使用密码
 ```
 
 ## Docker Compose
@@ -47,4 +48,5 @@ volumes:
 
 ## 参考
 https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
+
 https://github.com/docker-library/docs/blob/master/postgres/README.md
