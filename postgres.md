@@ -50,3 +50,15 @@ volumes:
 https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
 
 https://github.com/docker-library/docs/blob/master/postgres/README.md
+
+## 问题
+### ls: cannot access '/docker-entrypoint-initdb.d/': Operation not permitted
+解决办法：
+- 使用 `-alpine` 镜像
+```
+docker run -it -d --name postgres --network host -e POSTGRES_PASSWORD=password postgres:12-alpine
+```
+- 使用 `--privileged` 特权
+```
+docker run -it -d --name postgres --network host -e POSTGRES_PASSWORD=password --privileged postgres:12
+```
