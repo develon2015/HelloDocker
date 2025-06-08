@@ -53,7 +53,7 @@ https://github.com/docker-library/docs/blob/master/postgres/README.md
 
 ## 问题
 ### ls: cannot access '/docker-entrypoint-initdb.d/': Operation not permitted
-解决办法：
+可能是 docker 版本太低，除了升级外，还可用尝试以下解决办法：
 - 使用 `-alpine` 镜像
 ```
 docker run -it -d --name postgres --network host -e POSTGRES_PASSWORD=password postgres:12-alpine
