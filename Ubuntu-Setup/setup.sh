@@ -27,6 +27,19 @@ function rust_install() {
     rustup default stable
 }
 
+# https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04
+function swap() {
+    fallocate -l 2G /swapfile
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+    cp /etc/fstab /etc/fstab.bak
+    echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+    free -h
+    cat /proc/sys/vm/swappiness
+    cat /proc/sys/vm/vfs_cache_pressure
+}
+
 function main() {
   rust
   echo "OK"
